@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Munna Media Player 🎵</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="player">
+    <h2>🎧 Munna Media Player</h2>
+    
+    <input type="file" id="fileUpload" accept="audio/*" />
+    <br /><br />
+    <audio controls id="audioPlayer">
+      <source id="audioSource" src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileUpload');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioSource = document.getElementById('audioSource');
+
+    fileInput.addEventListener('change', function () {
+      const files = fileInput.files;
+      if (files.length > 0) {
+        const fileURL = URL.createObjectURL(files[0]);
+        audioSource.src = fileURL;
+        audioPlayer.load();
+        audioPlayer.play();
+      }
+    });
+  </script>
+</body>
+</html>
